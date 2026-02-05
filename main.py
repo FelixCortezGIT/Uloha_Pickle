@@ -18,6 +18,11 @@ class Countries:
             print(f"krajina {country} bola odstranena")
     def find(self, country):
         return self.cities.get(country, "krajina sa nenasla")
+    def find_by_city(self, city):
+        for country, capital in self.cities.items():
+            if capital == city:
+                return country
+        return print("hlavne mesto sa nenaslo")
     def show_all(self):
         for country, city in self.cities.items():
             print(country, "->", city)
@@ -42,3 +47,4 @@ world.remove("Nemecko")
 world.show_all()
 world.edit("Hungary", "Madarsko", "Budapest")
 world.show_all()
+print(world.find_by_city("Bratislava"))
