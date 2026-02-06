@@ -1,3 +1,5 @@
+import pickle
+
 class Countries:
     def __init__(self):
         self.cities = {
@@ -7,7 +9,6 @@ class Countries:
             "Nemecko": "Berlin",
             "Francuzsko": "Paris"
         }
-
     def add(self, country, city):
         self.cities[country] = city
     def remove(self, country):
@@ -32,12 +33,13 @@ class Countries:
         self.cities[new_country] = new_city
         del self.cities[country]
         print("udaje boli zmenene")
+    def save(self):
+        with open("capitals.pkl", "wb") as file:
+            pickle.dump(self.cities, file)
+    def load(self):
+        with open("capitals.pkl", "rb") as file:
+            self.cities = pickle.load(file)
 
-
-    # def save(self):
-    #
-    # def load(self):
-    #
 
 world = Countries()
 print(world.find("Slovensko"))
@@ -48,3 +50,9 @@ world.show_all()
 world.edit("Hungary", "Madarsko", "Budapest")
 world.show_all()
 print(world.find_by_city("Bratislava"))
+world.save()
+world.add("Canada", "Ottawa")
+world2 = Countries()
+world2.load()
+print(world2.cities)
+world.show_all()
