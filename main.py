@@ -75,11 +75,11 @@ def menu():
             wait_enter()
         elif choice == "4":
             country = input("ktoru krajinu hladas: ")
-            world.find(country)
+            print(world.find(country))
             wait_enter()
         elif choice == "5":
             city = input("hladaj mesto: ")
-            world.find_by_city(city)
+            print(world.find_by_city(city))
             wait_enter()
         elif choice == "6":
             world.show_all()
